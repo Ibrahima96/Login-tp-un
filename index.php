@@ -1,7 +1,7 @@
 <?php 
 session_start();
 $errer= "";
- 
+
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
   $email =$_POST['email'];
   $password =$_POST['password'];
@@ -20,6 +20,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
   }
 } 
 
+if(isset($_SESSION['login'])){
+    setcookie("login", $_SESSION['login'], time() + (86400 * 30), "/");
+}
 
 ;?>
 <!doctype html>
@@ -58,6 +61,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
       </div>
   </form> 
   <?= $errer?>
+
+
 </body>
 
 </html
